@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Youth Week Registration</title>
+    <!--<link rel="stylesheet" href="./templates/style.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+        }
+        body{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        /*padding: 50px 10px; /* Added top and bottom padding */
+        background:  #eeecea/*linear-gradient(135deg, #71b7e6, #9b59b6);*/
+        }
+
+        .main {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        /*justify-content: center;
+        align-items: center;*/
+        }
+
+        .form {
+        display: flex;
+        /*margin-left: 20%;*/
+        /*margin-left: 20%; /*please change and try to get it to center the form cntainer*/
+        justify-content: center;
+        align-items: center;
+        }
+
+        .container{
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        margin: 20px 0; /* Added top and bottom margin */
+        /*margin: auto;*/
+        }
+        .container .title{
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+        }
+        .container .title::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        border-radius: 5px;
+        background: black/*linear-gradient(135deg, #71b7e6, #9b59b6);*/
+        }
+        .content form .user-details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+        }
+        form .user-details .input-box{
+        margin-bottom: 15px;
+        width: calc(100% / 2 - 20px);
+        }
+        form .input-box span.details{
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+        }
+        .user-details .input-box input,
+        .user-details .input-box select{
+        height: 45px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+        }
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid,
+        .user-details .input-box select:focus,
+        .user-details .input-box select:valid{
+        border-color: black/*#9b59b6;*/
+        }
+        form .gender-details .gender-title{
+        font-size: 20px;
+        font-weight: 500;
+        }
+        form .category{
+        display: flex;
+        width: 80%;
+        margin: 14px 0 ;
+        justify-content: space-between;
+        }
+        form .category label{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        }
+        form .category label .dot{
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background: #d9d9d9;
+        border: 5px solid transparent;
+        transition: all 0.3s ease;
+        }
+        #dot-1:checked ~ .category label .one,
+        #dot-2:checked ~ .category label .two,
+        #dot-3:checked ~ .category label .three{
+        background: #9b59b6;
+        border-color: #d9d9d9;
+        }
+        form input[type="radio"]{
+        display: none;
+        }
+        form .button{
+        height: 45px;
+        margin: 35px 0;
+        }
+        form .button input{
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: black/*#0d6efd/*linear-gradient(135deg, #71b7e6, #9b59b6);*/
+        }
+        form .button input:hover{
+        background: #6c6c6d/*linear-gradient(-135deg, #71b7e6, #9b59b6);*/
+        }
+        @media(max-width: 584px){
+        .container{
+            max-width: 100%;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        form .category{
+            width: 100%;
+        }
+        .content form .user-details{
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+        .user-details::-webkit-scrollbar{
+            width: 5px;
+        }
+        }
+        @media(max-width: 459px){
+        .container .content .category{
+            flex-direction: column;
+        }
+        }
+
+
+        /* Add this to your existing CSS file or a new CSS file */
+        /*header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #ddd;
+        }
+        */
+
+        /*
+        main {
+        width: 100%;
+        height: 100%;
+        }
+        */
+
+        .header_1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        /*background-color: #f8f8f8;
+        border-bottom: 1px solid #ddd;*/
+        }
+
+        .logo {
+        display: flex;
+        align-items: center;
+        }
+
+        .logo img {
+        height: 40px;
+        margin-right: 10px;
+        }
+
+        .logo span {
+        font-size: 24px;
+        font-weight: bold;
+        }
+
+        .login-btn {
+        background-color: transparent;
+        border-color: black;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-decoration: none;
+        /*font-size: 16px;*/
+        }
+
+        .login-btn:hover {
+        background-color: black;
+        color: white;
+        }
+        /*
+        .login-btn a {
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+        font-size: 16px;
+        }
+
+        .login-btn a:hover {
+        background-color: #f80c0c;
+        }
+        */
+
+
+        /* styles.css */
+        .error {
+        border: 2px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main">
+
+<div class="header_1">
+    <div class="logo">
+        <img src="https://img.icons8.com/?size=100&id=BNHKs4rXUnLu&format=png&color=000000" alt="Youth Week Icon">
+        <h4>Youth Week</h4>
+    </div>  
+
+    <button class="login-btn" onclick="window.location.href='login.html'"><h4>Login</h4></button>
+</div>
+
+<div class="form" >
+<div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <form>
+            <!-- Personal Information Section -->
+            <div class="section" id="personal-info">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input type="text" id="first-name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" id="last-name" placeholder="Enter your last name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Age</span>
+                        <input type="number" id="age" placeholder="Enter your age" min="13" max="23" required>
+                        <small>Please note: Campers cannot be younger than 13 or older than 23. For anyone older than 23 who would like to serve at camp, please email info@youthweek.co.za</small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">T-shirt Size</span>
+                        <select id="tshirt-size" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                            <option value="x-large">X-Large</option>
+                            <option value="xx-large">XX-Large</option>
+                            <option value="xxx-large">XXX-Large</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Country</span>
+                        <input type="text" id="country" placeholder="Enter your country" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">City</span>
+                        <input type="text" id="city" placeholder="Enter your city" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Mobile Number</span>
+                        <input type="text" id="mobile-number" placeholder="Enter your mobile number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Emergency Contact Name</span>
+                        <input type="text" id="emergency-contact-name" placeholder="Enter emergency contact name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Emergency Contact Number</span>
+                        <input type="text" id="emergency-contact-number" placeholder="Enter emergency contact number" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="button" value="Next" onclick="validateAndShowSection('medical-info',personalInfoFields)">
+                </div>
+            </div>
+            
+            <!-- Medical Information Section -->
+            <div class="section" id="medical-info" style="display:none;">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Allergies (if applicable)</span>
+                        <input type="text" id="allergies" placeholder="Enter allergies">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Use of Prescribed Medication (if applicable)</span>
+                        <input type="text" id="prescribed-medication" placeholder="Enter prescribed medication">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Medical Aid</span>
+                        <input type="text" id="medical-aid" placeholder="Enter medical aid" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Medical Aid Number</span>
+                        <input type="text" id="medical-aid-number" placeholder="Enter medical aid number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Medical Aid Plan</span>
+                        <input type="text" id="medical-aid-plan" placeholder="Enter medical aid plan" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Medical Aid (Principal Member)</span>
+                        <input type="text" id="principal-member" placeholder="Enter principal member" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Dietary Restrictions</span>
+                        <select id="dietary-restrictions" required>
+                            <option value="">Select dietary restriction</option>
+                            <option value="None">None</option>
+                            <option value="Vegetarian">Vegetarian</option>
+                            <option value="Vegan">Vegan</option>
+                            <option value="Lactose Intolerant">Lactose Intolerant</option>
+                            <option value="Gluten-Free">Gluten-Free</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="button" value="Next" onclick="validateAndShowSection('payment-info', medicalInfoFields)">
+                </div>
+            </div>
+
+            <!-- Payment Information Section -->
+            <div class="section" id="payment-info" style="display:none;">
+                <h4>Transport</h4>
+                <small>If required from YFC Cyara, this will include a pick up and drop off from the mentioned locations at an additional cost of R200.<br>
+                  You will be contacted for the pick up times from these locations.</small>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Transport Pick-Up Location</span>
+                        <select id="pickup-location" required>
+                            <option value="">Select location</option>
+                            <option value="Southgate Mall">Southgate Mall</option>
+                            <option value="Northgate Mall">Northgate Mall</option>
+                            <option value="Westgate Mall">Westgate Mall</option>
+                            <option value="Eastgate Mall">Eastgate Mall</option>
+                            <option value="OR Tambo Int Airport">OR Tambo Int Airport</option>
+                            <option value="PTA Bus station">PTA Bus station</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Drop-Off Location</span>
+                        <select id="dropoff-location" required>
+                            <option value="">Select location</option>
+                            <option value="Southgate Mall">Southgate Mall</option>
+                            <option value="Northgate Mall">Northgate Mall</option>
+                            <option value="Westgate Mall">Westgate Mall</option>
+                            <option value="Eastgate Mall">Eastgate Mall</option>
+                            <option value="OR Tambo Int Airport">OR Tambo Int Airport</option>
+                            <option value="PTA Bus station">PTA Bus station</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <h4>Indemnity & Payment</h4>
+                <small>
+                    Payments can be made to:<br><br>
+                    <b>Bank:</b> Standard Bank,<br>
+                    <b>Account Name:</b> YFC Youth Week<br>
+                    <b>Account Number:</b> 201653796<br>
+                    <b>Branch:</b> Rosebank<br>
+                    <b>Branch code:</b> 004305<br>
+                    <b>Reference:</b> "YW & Your Name"
+                </small>
+
+                <br><small>Send Proof of Payment to info@youthweek.co.za</small> <br>
+                <!-- 
+                <div class="input-box">
+                    <br><small><b>Send Proof of Payment to info@youthweek.co.za</b></small> <br>
+                    <input type="file" id="proof-of-payment" accept="image/*, .pdf">
+                </div>
+                -->
+        
+                <br>
+                <h4>Camp Cost - Region Specific</h4>
+                <small>Please note camp costs are region specific (Please see details on website)</small>
+                
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Transport Pick-Up Location</span>
+                        <select id="region-specific-cost" required>
+                            <option value="">Select region</option>
+                            <option value="R1550: Joburg & Gauteng">R1550: Joburg & Gauteng</option>
+                            <option value="R1550: Inlands (Mpumalanga, North West, Free State)">R1550: Inlands (Mpumalanga, North West, Free State)</option>
+                            <option value="R1400: Costals (Durban, P.E, Cape Town and all)">R1400: Costals (Durban, P.E, Cape Town and all)</option>
+                            <option value="R1550: Botswana">R1550: Botswana</option>
+                            <option value="R1400: Outlands (Zimbabwe, Mozambique, Lesotho)">R1400: Outlands (Zimbabwe, Mozambique, Lesotho)</option>
+                            <option value="R1550: Internationals">R1550: Internationals</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="input-box">
+                    <h4>Camp Cost and Payment Confirmation</h4>
+                    <label><input type="checkbox" id="payment-confirmation" required> <small>I understand that full payment will need to be made before or on arrival to camp. <br><b>No campers will be allowed without full payment.</b></small></label>
+                </div>
+        
+                <br>
+                <br>
+                <small>
+                    For campers younger than 18, please submit this form and then go back to the main website to download an indemnity form for
+                    Parents/Guardians to fill in, and send to info@youthweek.co.za, along with your proof of payment.
+                    <br>
+                    <b>You will not be allowed to attend without these documents!</b>
+                    <br>
+                    <br>
+                    For campers 18 and older, please submit this form, then email a copy of ID to info@youthweek.co.za, along with your proof of payment.
+                    <br><b>You will not be allowed to attend without these documents!</b>
+                </small>
+        
+                <div class="button">
+                    <input type="submit" value="Submit" id="testing" onclick="validateAndSubmit()">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+<!--<script src="/templates/script.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    const personalInfoFields = [
+        'email',
+        'first-name',
+        'last-name',
+        'age',
+        'tshirt-size',
+        'country',
+        'city',
+        'mobile-number',
+        'emergency-contact-name',
+        'emergency-contact-number'
+    ];
+
+    const medicalInfoFields = [
+        'allergies',
+        'prescribed-medication',
+        'medical-aid',
+        'medical-aid-number',
+        'medical-aid-plan',
+        'principal-member',
+        'dietary-restrictions'
+    ];
+
+    const paymentInfoFields = [
+        'pickup-location',
+        'dropoff-location',
+        //'proof-of-payment',
+        'region-specific-cost',
+        'payment-confirmation'
+    ];
+
+    function validateAndShowSection(sectionId, fields) {
+        let allFilled = true;
+
+        fields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field.value.trim()) {
+                allFilled = false;
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        });
+
+        if (allFilled) {
+            showSection(sectionId);
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    }
+
+    function validateAndSubmit() {
+
+        let allFilled = true;
+
+        paymentInfoFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field.checked && !field.value.trim()) {
+                allFilled = false;
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        });
+
+        if (allFilled) {  
+            
+            let formData = {};
+
+            [...personalInfoFields, ...medicalInfoFields, ...paymentInfoFields].forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                formData[fieldId] = field.value.trim();
+            });
+
+            let a = "false"
+            
+            $.ajax({
+                url: '/send_form',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                async: false,
+                success: function(response) {
+                    // Handle success response
+                    //alert("Successfully registered.")
+                    //window.location.href = 'successfully_registered.html';
+                    if (response.message) {
+                        a = "Thank you for registering for Youth Week. You will receive an email soon with further details."
+                        window.location.href = '/successfully_registered.html';
+                    } else {
+                        a = "Something went wrong."
+                        //alert(response.error || 'Error submitting form. Please try again.');
+                        alert('Error submitting form. Please try again.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    alert("Error while submitting. Please try again.")
+                }
+
+            });
+
+            alert(a)
+            if(a == "Successfully registered."){
+                window.location.href = '/successfully_registered.html';
+            }
+            else{
+                window.location.href = '/index.html';
+            }
+
+
+
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    }
+</script>
+
+</body>
+</html>

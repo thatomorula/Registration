@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Youth Week Registration - User Details</title>
+    <!--<link rel="stylesheet" href="./templates/style.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eeecea;
+        }
+        .main {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+        }
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            margin: 20px 0;
+        }
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            border-radius: 5px;
+            background: black;
+        }
+        .header_1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .login-btn {
+            background-color: transparent;
+            border-color: black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .login-btn:hover {
+            background-color: black;
+            color: white;
+        }
+        .back-home-btn {
+            margin-top: 2%;
+            height: 45px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: black;
+        }
+        .info-section {
+            margin-top: 20px;
+        }
+        .info-section .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .info-section .details {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .back-home-btn {
+            margin-top: 2%;
+            height: 45px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+
+<div class="header_1">
+    <div class="logo">
+        <img src="https://img.icons8.com/?size=100&id=BNHKs4rXUnLu&format=png&color=000000" alt="Youth Week Icon">
+        <h4>Youth Week</h4>
+    </div>
+    <button class="login-btn" onclick="window.location.href='login.html'"><h4>Logout</h4></button>
+</div>
+
+<div class="form">
+    <div class="container">
+        <div class="title">User Details</div>
+
+        , 
+
+        <div class="info-section">
+            <div class="section-title">Allocations</div>
+            <div class="details">
+                    <p><strong>Tribe Allocation:</strong> {{ user.tribe_allocation }}</p>
+                    <p><strong>Room Number Allocation:</strong> {{ user.room_number_allocation }}</p>
+            </div>
+        </div>
+    
+        <div class="info-section">
+            <div class="section-title">Personal Info</div>
+            <div class="details">
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                    <p><strong>Age:</strong> {{ user.age }}</p>
+                    <p><strong>T-Shirt Size:</strong> {{ user.tshirt_size }}</p>
+                    <p><strong>Country:</strong> {{ user.country }}</p>
+                    <p><strong>City:</strong> {{ user.city }}</p>
+                    <p><strong>Mobile Number:</strong> {{ user.mobile_number }}</p>
+                    <p><strong>Emergency Contact Name:</strong> {{ user.emergency_contact_name }}</p>
+                    <p><strong>Emergency Contact Number:</strong> {{ user.emergency_contact_number }}</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="section-title">Medical Info</div>
+            <div class="details">
+                    <p><strong>Allergies:</strong> {{ user.allergies }}</p>
+                    <p><strong>Prescribed Medication:</strong> {{ user.prescribed_medication }}</p>
+                    <p><strong>Medical Aid:</strong> {{ user.medical_aid }}</p>
+                    <p><strong>Medical Aid Number:</strong> {{ user.medical_aid_number }}</p>
+                    <p><strong>Medical Aid Plan:</strong> {{ user.medical_aid_plan }}</p>
+                    <p><strong>Principal Member:</strong> {{ user.principal_member }}</p>
+                    <p><strong>Dietary Restrictions:</strong> {{ user.dietary_restrictions }}</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="section-title">Payment Info</div>
+            <div class="details">
+                    <p><strong>Pickup Location:</strong> {{ user.pickup_location }}</p>
+                    <p><strong>Dropoff Location:</strong> {{ user.dropoff_location }}</p>
+                    <p><strong>Region Specific Cost:</strong> {{ user.region_specific_cost }}</p>
+                    <p><strong>Payment Confirmation:</strong> {{ user.payment_confirmation }}</p>
+            </div>
+        </div>
+
+
+        <button class="back-home-btn" onclick="window.location.href='admin_interface.html'"><h4>Back</h4></button>
+
+    </div>
+</div>
+</div>
+
+<!--<script src="/templates/script.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

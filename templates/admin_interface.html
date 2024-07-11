@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Youth Week Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eeecea;
+        }
+        .main {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+        }
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            margin: 20px 0;
+            overflow-x: auto; /* Add horizontal scroll for table overflow */
+        }
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+            display: flex;
+            justify-content: space-between; /* Align items to right */
+            align-items: center;
+        }
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            border-radius: 5px;
+            background: black;
+        }
+        .header_1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .login-btn {
+            background-color: transparent;
+            border-color: black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .login-btn:hover {
+            background-color: black;
+            color: white;
+        }
+        .back-home-btn {
+            margin-top: 2%;
+            height: 45px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: black;
+        }
+        form {
+            margin-top: 2%;
+        }
+        form .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        form .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        form .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        form .input-box input:focus {
+            border-color: black;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        .error {
+            border: 2px solid red;
+        }
+        /* New Styles for User Table */
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed; /* Force table to use fixed layout */
+        }
+        .user-table th, .user-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            white-space: normal; /* Allow text wrapping */
+            word-wrap: break-word; /* Break words that exceed the column width */
+        }
+        .user-table th {
+            background-color: black;
+            color: white;
+            font-weight: 600;
+        }
+        .user-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Style for clickable rows */
+        .user-table tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        .export-btn {
+            margin-bottom: 10px;
+        }
+        .export-btn button {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .export-btn button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+
+<div class="header_1">
+    <div class="logo">
+        <img src="https://img.icons8.com/?size=100&id=BNHKs4rXUnLu&format=png&color=000000" alt="Youth Week Icon">
+        <h4>Youth Week</h4>
+    </div>
+    <button class="login-btn" onclick="window.location.href='login.html'"><h4>Log Out</h4></button>
+</div>
+
+<div class="form">
+    <div class="container">
+        <div class="title">
+            <span>All Registered Users</span>
+            <div class="export-btn">
+                <button id="export-btn">Export to Excel</button>
+            </div>
+        </div>
+        <table id="user-table" class="user-table">
+            <thead>
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Country</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- List of registered users will be shown here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Fetch users data from Flask API
+        $.ajax({
+            url: '/get_users',
+            method: 'GET',
+            success: function(data) {
+                var userTableBody = $('#user-table tbody');
+                // Iterate through each user and create table rows
+                data.forEach(function(user) {
+                    var userRow = `
+                        <tr class="user-row" data-user-id="${user.id}">
+                            <td>${user.name}</td>
+                            <td class="email-cell">${user.email}</td>
+                            <td>${user.mobile_number}</td>
+                            <td>${user.country}</td>
+                            <td>${user.city}</td>
+                        </tr>
+                    `;
+                    userTableBody.append(userRow);
+                });
+
+                // Handle click on user row
+                $('.user-row').click(function() {
+                    var userId = $(this).data('user-id');
+                    // Send userId to Flask API endpoint for further processing
+                    $.ajax({
+                        url: '/user_details',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ 'user_id': userId }),
+                        success: function(response) {
+                            // Handle success response from Flask
+                            window.location.href = '/user_details.html?id=' + userId; // Pass userId as query parameter 
+                        },
+                        error: function(error) {
+                            console.error('Error sending user details to Flask:', error);
+                        }
+                    });
+                });
+
+                // Export to Excel functionality
+                $('#export-btn').click(function() {
+                    var users = data;
+                    var wb = XLSX.utils.book_new();
+                    var ws = XLSX.utils.json_to_sheet(users);
+                    XLSX.utils.book_append_sheet(wb, ws, "Registered Users");
+                    var filename = "registered_users.xlsx";
+                    XLSX.writeFile(wb, filename);
+                });
+            },
+            error: function(error) {
+                console.log('Error fetching users:', error);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
